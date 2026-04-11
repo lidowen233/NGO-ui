@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | SENSE Institute</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pocketbase@0.21.1/dist/pocketbase.umd.js"></script>
+    <style>
+        html { scroll-behavior: smooth; }
+        body { background-color: #606d77; font-family: 'Inter', sans-serif; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(28px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .anim-fade-up {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        .delay-1 { animation-delay: 0.15s; }
+        .delay-2 { animation-delay: 0.35s; }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="text-gray-900">
+
+    <nav class="fixed w-full z-50 transition-all duration-300 py-5 text-white" id="navbar">
+        <div class="relative flex items-center px-8">
+            <a href="index.html" class="absolute left-8 flex items-center gap-2">
+                <img id="nav-logo-img" class="h-10 w-auto hidden" alt="SENSE Institute">
+                <span id="nav-logo-text" class="text-base font-semibold tracking-widest uppercase">SENSE INSTITUTE</span>
+            </a>
+            <div class="flex-1 flex justify-center">
+                <div class="hidden md:flex space-x-10 text-xs font-medium tracking-widest uppercase">
+                    <a href="index.html" class="hover:opacity-60 transition">Home</a>
+                    <a href="about.html" class="hover:opacity-60 transition border-b border-current pb-0.5">About</a>
+                    <a href="labs.html" class="hover:opacity-60 transition">Labs</a>
+                    <a href="insights.html" class="hover:opacity-60 transition">Insights</a>
+                    <a href="programs.html" class="hover:opacity-60 transition">Programs</a>
+                    <a href="contact.html" class="hover:opacity-60 transition">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero: Our Mission -->
+    <section class="relative min-h-screen flex flex-col items-center justify-center text-center text-white overflow-hidden"
+             style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.55)), #4a5a6a;">
+        <div class="px-6 relative z-10 max-w-4xl mx-auto pb-32">
+            <h1 class="anim-fade-up delay-1 text-5xl md:text-7xl font-bold mb-8 tracking-tight">Our Mission</h1>
+            <p class="anim-fade-up delay-2 text-lg md:text-xl mb-6 leading-relaxed font-light">
+                SENSE Institute is a registered 501(c)(3) nonprofit research organization led by young scholars
+                and practitioners. We advance problem-driven innovation for social impact through evidence-based
+                research, programs, and open collaboration.
+            </p>
+            <p class="anim-fade-up delay-2 text-base md:text-lg text-gray-200 leading-relaxed font-light">
+                Our mission is grounded in four interconnected pillars: Justice, Sustainability, Resilience, and
+                Well-being—guiding our work to integrate theoretical foundations with data-driven methodologies
+                to address real-world challenges.
+            </p>
+        </div>
+        <!-- 4 Pillars -->
+        <div class="absolute bottom-0 left-0 right-0 grid grid-cols-2 md:grid-cols-4">
+            <div class="bg-black/50 p-6 text-center border border-white/10">
+                <p class="font-semibold tracking-widest text-xs mb-1 uppercase">Justice</p>
+                <p class="text-xs text-gray-300 font-light">Climate &amp; Social Equity</p>
+            </div>
+            <div class="bg-black/50 p-6 text-center border border-white/10">
+                <p class="font-semibold tracking-widest text-xs mb-1 uppercase">Sustainability</p>
+                <p class="text-xs text-gray-300 font-light">Energy &amp; Resources</p>
+            </div>
+            <div class="bg-black/50 p-6 text-center border border-white/10">
+                <p class="font-semibold tracking-widest text-xs mb-1 uppercase">Resilience</p>
+                <p class="text-xs text-gray-300 font-light">Urban Systems &amp; Infrastructure</p>
+            </div>
+            <div class="bg-black/50 p-6 text-center border border-white/10">
+                <p class="font-semibold tracking-widest text-xs mb-1 uppercase">Well-Being</p>
+                <p class="text-xs text-gray-300 font-light">Health &amp; Flourishing</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advisory Board -->
+    <section class="bg-[#f0ebe3] py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="reveal text-3xl font-light text-[#2a4a6b] mb-12 tracking-wide">Advisory Board</h2>
+            <div id="advisory-container" class="grid grid-cols-2 md:grid-cols-5 gap-6">
+                <div class="animate-pulse col-span-5 h-40 bg-gray-200 rounded"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership & Operations -->
+    <section class="bg-[#f0ebe3] py-16 px-6 border-t border-gray-200">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="reveal text-3xl font-light text-[#2a4a6b] mb-12 tracking-wide">Leadership &amp; Operations</h2>
+            <div id="leadership-container" class="grid grid-cols-2 md:grid-cols-5 gap-6">
+                <div class="animate-pulse col-span-5 h-40 bg-gray-200 rounded"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Team -->
+    <section class="bg-[#f0ebe3] py-16 px-6 border-t border-gray-200">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="reveal text-3xl font-light text-[#2a4a6b] mb-12 tracking-wide">Research Team</h2>
+            <div id="research-container" class="grid grid-cols-2 md:grid-cols-5 gap-6">
+                <div class="animate-pulse col-span-5 h-40 bg-gray-200 rounded"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="background-color: #164056; border-top: 1px solid rgba(255,255,255,0.08);">
+        <div class="max-w-6xl mx-auto px-8 py-10 flex flex-col md:flex-row items-center md:items-start gap-8">
+            <div class="flex items-center gap-4 md:w-64 shrink-0">
+                <img id="footer-logo-img" class="h-12 w-auto hidden" alt="SENSE Institute">
+                <div>
+                    <p class="font-bold text-sm tracking-wide" style="color: #fdf6ee;">SENSE Institute</p>
+                    <p class="text-xs mt-0.5 leading-snug" style="color: #fdf6ee; opacity: 0.7;">Systems for Environment &amp;<br>Societal Intelligence Institute</p>
+                </div>
+            </div>
+            <div class="flex-1 flex justify-center">
+                <div class="flex flex-wrap justify-center gap-x-8 gap-y-2 text-xs tracking-widest uppercase" style="color: #eff4ff;">
+                    <a href="index.html" class="hover:opacity-60 transition">Home</a>
+                    <a href="about.html" class="hover:opacity-60 transition">About</a>
+                    <a href="labs.html" class="hover:opacity-60 transition">Labs</a>
+                    <a href="insights.html" class="hover:opacity-60 transition">Insights</a>
+                    <a href="programs.html" class="hover:opacity-60 transition">Programs</a>
+                    <a href="contact.html" class="hover:opacity-60 transition">Contact</a>
+                </div>
+            </div>
+        </div>
+        <div class="border-t text-center py-4 text-xs" style="border-color: rgba(255,255,255,0.08); color: #fdf6ee; opacity: 0.6;">
+            &copy; 2026 SENSE Institute. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        const pb = new PocketBase('https://senseinstitute.org');
+
+        function memberCard(item) {
+            const photoUrl = item.photo ? pb.files.getUrl(item, item.photo) : null;
+            const imgHtml = photoUrl
+                ? `<img src="${photoUrl}" class="w-full aspect-[3/4] object-cover rounded-sm mb-3" alt="${item.name}">`
+                : `<div class="w-full aspect-[3/4] bg-gray-200 rounded-sm mb-3"></div>`;
+            const roleColor = item.section === 'research_team' ? 'text-[#3d7d75] font-medium' : 'text-gray-400';
+            const profileLink = item.profile_url
+                ? `<a href="${item.profile_url}" target="_blank" class="text-xs text-blue-600 hover:underline mt-0.5 block">Profile</a>` : '';
+            return `
+                <div class="reveal flex flex-col items-center text-center">
+                    ${imgHtml}
+                    <p class="font-semibold text-gray-800 text-sm">${item.name}</p>
+                    ${item.role ? `<p class="text-xs ${roleColor} mt-0.5">${item.role}</p>` : ''}
+                    ${profileLink}
+                </div>`;
+        }
+
+        async function loadTeamMembers() {
+            try {
+                const records = await pb.collection('team_members').getFullList({ sort: 'order,created' });
+                const groups = { advisory_board: [], leadership: [], research_team: [] };
+                records.forEach(r => { if (groups[r.section]) groups[r.section].push(r); });
+
+                ['advisory_board', 'leadership', 'research_team'].forEach(section => {
+                    const ids = { advisory_board: 'advisory-container', leadership: 'leadership-container', research_team: 'research-container' };
+                    const el = document.getElementById(ids[section]);
+                    if (!el) return;
+                    if (groups[section].length === 0) {
+                        el.innerHTML = '<p class="col-span-5 text-gray-400 text-sm">No records yet.</p>';
+                    } else {
+                        el.innerHTML = groups[section].map(memberCard).join('');
+                    }
+                });
+                initReveal();
+            } catch (e) { console.error('Team load error', e); }
+        }
+
+        function initReveal() {
+            const els = document.querySelectorAll('.reveal:not(.revealed)');
+            const obs = new IntersectionObserver((entries) => {
+                entries.forEach((entry, i) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => entry.target.classList.add('revealed'), i * 60);
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            els.forEach(el => obs.observe(el));
+        }
+
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-white', 'text-gray-900', 'shadow-sm');
+                nav.classList.remove('text-white');
+            } else {
+                nav.classList.remove('bg-white', 'text-gray-900', 'shadow-sm');
+                nav.classList.add('text-white');
+            }
+        });
+
+        // Load logo — uses name field
+        async function loadLogo() {
+            try {
+                const records = await pb.collection('assets').getFullList({ sort: '-created' });
+                const logoRecord = records.find(r => r.name && r.name.toLowerCase().includes('logo'));
+                if (logoRecord?.media) {
+                    const logoUrl = pb.files.getUrl(logoRecord, logoRecord.media);
+                    const img = document.getElementById('nav-logo-img');
+                    img.src = logoUrl;
+                    img.classList.remove('hidden');
+                    document.getElementById('nav-logo-text').classList.add('hidden');
+                    const footerImg = document.getElementById('footer-logo-img');
+                    if (footerImg) { footerImg.src = logoUrl; footerImg.classList.remove('hidden'); }
+                }
+            } catch(e) {}
+        }
+
+        loadTeamMembers();
+        loadLogo();
+        document.addEventListener('DOMContentLoaded', () => setTimeout(initReveal, 100));
+    </script>
+</body>
+</html>
