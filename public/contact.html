@@ -72,7 +72,9 @@
         <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
 
             <div class="reveal bg-white rounded-lg overflow-hidden shadow-sm">
-                <div class="aspect-[4/3] bg-gray-200"></div>
+                <div class="aspect-[4/3] bg-gray-200">
+                     <img id="contact-img1" class="w-full h-full object-cover hidden" />
+                </div>
                 <div class="p-6">
                     <h3 class="text-xl font-semibold text-[#2a4a6b] mb-3 tracking-tight">Collaborations &amp; Inquiries</h3>
                     <p class="text-gray-600 text-sm leading-relaxed mb-4 font-light">
@@ -86,7 +88,9 @@
             </div>
 
             <div class="reveal bg-white rounded-lg overflow-hidden shadow-sm">
-                <div class="aspect-[4/3] bg-gray-200"></div>
+                <div class="aspect-[4/3] bg-gray-200">
+                     <img id="contact-img2" class="w-full h-full object-cover hidden" />
+                </div>
                 <div class="p-6">
                     <h3 class="text-xl font-semibold text-[#2a4a6b] mb-3 tracking-tight">Join Our Team</h3>
                     <p class="text-gray-600 text-sm leading-relaxed mb-4 font-light">
@@ -100,7 +104,9 @@
             </div>
 
             <div class="reveal bg-white rounded-lg overflow-hidden shadow-sm">
-                <div class="aspect-[4/3] bg-gray-200"></div>
+                <div class="aspect-[4/3] bg-gray-200">
+                     <img id="contact-img3" class="w-full h-full object-cover hidden" />
+                </div>
                 <div class="p-6">
                     <h3 class="text-xl font-semibold text-[#2a4a6b] mb-3 tracking-tight">Support Our Work</h3>
                     <p class="text-gray-600 text-sm leading-relaxed mb-4 font-light">
@@ -172,7 +178,64 @@
                 }
             } catch(e) {}
         }
+       
 
+        // 1. Load assets — uses name field to find the right records
+        async function loadAssets() {
+            try {
+                const records = await pb.collection('assets').getFullList({
+                    sort: '-created',
+                    requestKey: null  
+                });
+                // Find Contact1
+                const contactRecord = records.find(
+                    r => r.name && r.name.toLowerCase() === 'contact1_img'
+                );
+
+                if (contactRecord?.media) {
+                    
+                    const url = pb.files.getUrl(contactRecord, contactRecord.media);
+
+                    const img = document.getElementById('contact-img1');
+                    img.src = url;
+                    img.onload = () => {
+                        img.classList.remove('hidden');
+                    };
+                }
+                // Find Contact1
+                const contactRecord2 = records.find(
+                    r => r.name && r.name.toLowerCase() === 'contact2_img'
+                );
+
+                if (contactRecord2?.media) {
+                    
+                    const url = pb.files.getUrl(contactRecord2, contactRecord2.media);
+
+                    const img = document.getElementById('contact-img2');
+                    img.src = url;
+                    img.onload = () => {
+                        img.classList.remove('hidden');
+                    };
+                }
+                // Find Contact1
+                const contactRecord3 = records.find(
+                    r => r.name && r.name.toLowerCase() === 'contact3_img'
+                );
+
+                if (contactRecord3?.media) {
+                    
+                    const url = pb.files.getUrl(contactRecord3, contactRecord3.media);
+
+                    const img = document.getElementById('contact-img3');
+                    img.src = url;
+                    img.onload = () => {
+                        img.classList.remove('hidden');
+                    };
+                }
+            } catch (e) { console.error('Assets load error', e); }
+        }
+
+        loadAssets();
         loadLogo();
         document.addEventListener('DOMContentLoaded', () => setTimeout(initReveal, 100));
     </script>

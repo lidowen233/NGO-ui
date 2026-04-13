@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,38 +11,61 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/pocketbase@0.21.1/dist/pocketbase.umd.js"></script>
     <style>
-        html { scroll-behavior: smooth; }
-        body { background-color: #606d77; font-family: 'Inter', sans-serif; }
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #606d77;
+            font-family: 'Inter', sans-serif;
+        }
 
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(28px); }
-            to   { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(28px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
         .anim-fade-up {
             opacity: 0;
             animation: fadeInUp 0.8s ease forwards;
         }
-        .delay-1 { animation-delay: 0.15s; }
-        .delay-2 { animation-delay: 0.35s; }
+
+        .delay-1 {
+            animation-delay: 0.15s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.35s;
+        }
 
         .reveal {
             opacity: 0;
             transform: translateY(24px);
             transition: opacity 0.7s ease, transform 0.7s ease;
         }
+
         .reveal.revealed {
             opacity: 1;
             transform: translateY(0);
         }
     </style>
 </head>
+
 <body class="text-gray-900">
 
     <nav class="fixed w-full z-50 transition-all duration-300 py-5 text-white" id="navbar">
         <div class="relative flex items-center px-8">
             <a href="index.html" class="absolute left-8 flex items-center gap-2">
                 <img id="nav-logo-img" class="h-10 w-auto hidden" alt="SENSE Institute">
-                <span id="nav-logo-text" class="text-base font-semibold tracking-widest uppercase">SENSE INSTITUTE</span>
+                <span id="nav-logo-text" class="text-base font-semibold tracking-widest uppercase">SENSE
+                    INSTITUTE</span>
             </a>
             <div class="flex-1 flex justify-center">
                 <div class="hidden md:flex space-x-10 text-xs font-medium tracking-widest uppercase">
@@ -57,8 +81,13 @@
     </nav>
 
     <!-- Hero: Our Mission -->
-    <section class="relative min-h-screen flex flex-col items-center justify-center text-center text-white overflow-hidden"
-             style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.55)), #4a5a6a;">
+    <section
+        class="relative min-h-screen flex flex-col items-center justify-center text-center text-white overflow-hidden"
+        style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.55)), #4a5a6a;">
+        <video autoplay loop muted playsinline id="about-bg-video"
+            class="absolute top-0 left-0 w-full h-full object-cover z-0"
+            style="opacity: 0; transition: opacity 1.4s ease-in;">
+        </video>
         <div class="px-6 relative z-10 max-w-4xl mx-auto pb-32">
             <h1 class="anim-fade-up delay-1 text-5xl md:text-7xl font-bold mb-8 tracking-tight">Our Mission</h1>
             <p class="anim-fade-up delay-2 text-lg md:text-xl mb-6 leading-relaxed font-light">
@@ -73,23 +102,45 @@
             </p>
         </div>
         <!-- 4 Pillars -->
-        <div class="absolute bottom-0 left-0 right-0 grid grid-cols-2 md:grid-cols-4">
-            <div class="bg-black/50 p-6 text-center border border-white/10">
-                <p class="font-semibold tracking-widest text-xs mb-1 uppercase">Justice</p>
-                <p class="text-xs text-gray-300 font-light">Climate &amp; Social Equity</p>
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 
+            grid grid-cols-2 md:grid-cols-4 gap-5 px-6 w-full max-w-5xl">
+
+            <div class="p-6 text-center rounded-lg shadow-sm transition" style="background-color:#7c95a1;">
+                <p class="text-xs font-semibold tracking-widest uppercase mb-2 text-white">
+                    Justice
+                </p>
+                <p class="text-xs font-light leading-relaxed" style="color:#164056;">
+                    Climate &amp; Social Equity
+                </p>
             </div>
-            <div class="bg-black/50 p-6 text-center border border-white/10">
-                <p class="font-semibold tracking-widest text-xs mb-1 uppercase">Sustainability</p>
-                <p class="text-xs text-gray-300 font-light">Energy &amp; Resources</p>
+
+            <div class="p-6 text-center rounded-lg shadow-sm transition" style="background-color:#7c95a1;">
+                <p class="text-xs font-semibold tracking-widest uppercase mb-2 text-white">
+                    Sustainability
+                </p>
+                <p class="text-xs font-light leading-relaxed" style="color:#164056;">
+                    Energy &amp; Resources
+                </p>
             </div>
-            <div class="bg-black/50 p-6 text-center border border-white/10">
-                <p class="font-semibold tracking-widest text-xs mb-1 uppercase">Resilience</p>
-                <p class="text-xs text-gray-300 font-light">Urban Systems &amp; Infrastructure</p>
+
+            <div class="p-6 text-center rounded-lg shadow-sm transition" style="background-color:#7c95a1;">
+                <p class="text-xs font-semibold tracking-widest uppercase mb-2 text-white">
+                    Resilience
+                </p>
+                <p class="text-xs font-light leading-relaxed" style="color:#164056;">
+                    Urban Systems &amp; Infrastructure
+                </p>
             </div>
-            <div class="bg-black/50 p-6 text-center border border-white/10">
-                <p class="font-semibold tracking-widest text-xs mb-1 uppercase">Well-Being</p>
-                <p class="text-xs text-gray-300 font-light">Health &amp; Flourishing</p>
+
+            <div class="p-6 text-center rounded-lg shadow-sm transition" style="background-color:#7c95a1;">
+                <p class="text-xs font-semibold tracking-widest uppercase mb-2 text-white">
+                    Well-Being
+                </p>
+                <p class="text-xs font-light leading-relaxed" style="color:#164056;">
+                    Health &amp; Flourishing
+                </p>
             </div>
+
         </div>
     </section>
 
@@ -129,11 +180,13 @@
                 <img id="footer-logo-img" class="h-12 w-auto hidden" alt="SENSE Institute">
                 <div>
                     <p class="font-bold text-sm tracking-wide" style="color: #fdf6ee;">SENSE Institute</p>
-                    <p class="text-xs mt-0.5 leading-snug" style="color: #fdf6ee; opacity: 0.7;">Systems for Environment &amp;<br>Societal Intelligence Institute</p>
+                    <p class="text-xs mt-0.5 leading-snug" style="color: #fdf6ee; opacity: 0.7;">Systems for Environment
+                        &amp;<br>Societal Intelligence Institute</p>
                 </div>
             </div>
             <div class="flex-1 flex justify-center">
-                <div class="flex flex-wrap justify-center gap-x-8 gap-y-2 text-xs tracking-widest uppercase" style="color: #eff4ff;">
+                <div class="flex flex-wrap justify-center gap-x-8 gap-y-2 text-xs tracking-widest uppercase"
+                    style="color: #eff4ff;">
                     <a href="index.html" class="hover:opacity-60 transition">Home</a>
                     <a href="about.html" class="hover:opacity-60 transition">About</a>
                     <a href="labs.html" class="hover:opacity-60 transition">Labs</a>
@@ -143,14 +196,42 @@
                 </div>
             </div>
         </div>
-        <div class="border-t text-center py-4 text-xs" style="border-color: rgba(255,255,255,0.08); color: #fdf6ee; opacity: 0.6;">
+        <div class="border-t text-center py-4 text-xs"
+            style="border-color: rgba(255,255,255,0.08); color: #fdf6ee; opacity: 0.6;">
             &copy; 2026 SENSE Institute. All rights reserved.
         </div>
     </footer>
 
     <script>
         const pb = new PocketBase('https://senseinstitute.org');
+        // 1. Load assets — uses name field to find the right records
+        async function loadAssets() {
+            try {
+                const records = await pb.collection('assets').getFullList({
+                    sort: '-created',
+                    requestKey: null
+                });
 
+                // Find hero video record (name="about_bg_video" or contains "about", file in media field)
+                const heroRecord = records.find(r => r.name && (r.name.toLowerCase() === 'about_bg_video'));
+                if (heroRecord?.media) {
+
+                    const video = document.getElementById('about-bg-video');
+                    video.src = pb.files.getUrl(heroRecord, heroRecord.media);
+
+                    video.playsInline = true;
+
+                    video.onloadeddata = () => {
+                        video.style.opacity = 1;
+
+                        video.play().catch(err => {
+                            console.log('Autoplay blocked:', err);
+                        });
+                    };
+                }
+
+            } catch (e) { console.error('Assets load error', e); }
+        }
         function memberCard(item) {
             const photoUrl = item.photo ? pb.files.getUrl(item, item.photo) : null;
             const imgHtml = photoUrl
@@ -226,12 +307,13 @@
                     const footerImg = document.getElementById('footer-logo-img');
                     if (footerImg) { footerImg.src = logoUrl; footerImg.classList.remove('hidden'); }
                 }
-            } catch(e) {}
+            } catch (e) { }
         }
-
+        loadAssets();
         loadTeamMembers();
         loadLogo();
         document.addEventListener('DOMContentLoaded', () => setTimeout(initReveal, 100));
     </script>
 </body>
+
 </html>
